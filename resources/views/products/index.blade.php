@@ -11,6 +11,7 @@
     <h1>Products</h1>
 
     <a href="{{route('products')}}">Products</a>
+    <a href="{{route('applications')}}">Applications</a>
 
 </body>
 

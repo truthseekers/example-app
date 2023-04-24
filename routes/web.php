@@ -27,7 +27,7 @@ Route::get('/greeting', function () {
 
 Route::get("/apply", function () {
     return view('apply');
-});
+})->name('apply');
 
 Route::get("/applicants", function () {
     return view('applicants');

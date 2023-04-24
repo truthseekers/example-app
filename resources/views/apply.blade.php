@@ -34,6 +34,10 @@
                     width: 50%;
                 }
 
+                .link-container {
+                    width: 50%;
+                }
+
                 .myh1 {
                     font-size: 64px;
                 }
@@ -42,6 +46,9 @@
                     .form-container {
                         width: 90%;
                     }
+                .link-container {
+                    width: 90%;
+                }
                     .myh1 {
                         font-size: 34px;
                     }
@@ -74,6 +81,12 @@
                           <input type="number" id="creditscore" name="creditscore" value=""><br><br>
                           <input type="submit" value="Submit">
                         </form>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <div class="flex justify-start link-container">
+                        <!-- <a style="margin-right: 15px;" href="{{route('products')}}">Link one</a> -->
+                        <a style="margin-right: 15px; text-decoration: underline; color: blue;" href="{{route('applications')}}">Applications</a>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Application;
+use App\Mail\TestEmail;
+use Mail;
 
 class ApplicationsController extends Controller
 {
@@ -67,6 +69,25 @@ class ApplicationsController extends Controller
 
     // I know I should probably be doing the model->save(); format but there's an error, and I don't know if I'm even going to get the opportunity to do the actual code challenge. so I'll figure that out later if I get to that point
     DB::insert('insert into applications (id, name, email, creditscore) values (?, ?, ?, ?)', [count($currentApps) + 1, $request->name, $request->email, $request->creditscore]);
+
+
+    Mail::to($request->email)->send(new TestEmail($request->name, $request->creditscore));
+
+    // Mail::send('apply',
+    // [
+    //     'name' => 'test name',
+    //     'email' => 'email thing',
+    //     'comment' => 'comment'
+    // ],
+    //     function ($message) {
+    //         $message->from('john@truthseekers.io');
+    //         $message->to('fastpenguin91@gmail.com', 'John test to')->subject("The subject thing");
+    //     }
+    // );
+
+
+
+    // return "Done?";
 
     // return redirect('add-blog-post-form')->with('status', 'Blog Post Form Data Has Been inserted');
     return redirect('apply')->with('status', 'Your application has been submitted! Please check your email for results');
