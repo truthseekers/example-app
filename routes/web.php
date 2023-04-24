@@ -47,12 +47,14 @@ Route::get('/products', [ProductsController::class, 'index'])->name('products');
 
 // Route::get('/user/{id}', [UserController::class, 'show']);
 
-Route::get('/users', [UserController::class, 'index'])->name('users');
-
-Route::get('/applications', [ApplicationsController::class, 'index'])->name('applications');
-
 // Route::get('/user/profile', function () {
 //     // ...
 // })->name('profile');
 
 // $url = route('profile', ['id' => 1]);
+
+Route::get('/users', [UserController::class, 'index'])->name('users');
+
+Route::get('/applications', [ApplicationsController::class, 'index'])->name('applications');
+
+Route::post('submitapplication', [ApplicationsController::class, 'submitapplication']);
