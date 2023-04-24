@@ -9,6 +9,17 @@ use Illuminate\View\View;
 
 class UserController extends Controller
 {
+
+   public function index() {
+
+    print_r(route('users'));
+
+    // users.index would mean have a "views/users/index.blade.php"
+    return view('user.index');
+
+   }
+
+
     /**
      * Show the profile for a given user.
      */
