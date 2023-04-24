@@ -38,6 +38,7 @@ class ApplicationsController extends Controller
     // return view('products.index', [
     //     'data' => $data
     // ]);
+    // print_r(count($applications));
 
     // users.index would mean have a "views/users/index.blade.php"
     return view('applications.index', [ "applications" => $applications]);
@@ -48,12 +49,27 @@ class ApplicationsController extends Controller
    public function submitapplication(Request $request)
    {
     // die("did it work?");
-    $application = new Application;
-    $application->name = $request->name;
-    $application->email = $request->email;
-    $application->save();
+    // $application = new Application;
+    // $application->name = $request->name;
+    // $application->email = $request->email;
+    // $application->save();
+    
+    // was trying to use the count from sql but I forgot how. hacky solution just to prove I can do php for now.lol
+    // $currentAppCount = DB::select('select Count(*) from applications');
+
+    // print_r($currentAppCount[0]);
+    // I know there's a way to get just the count
+    $currentApps = DB::select('select * from applications');
+
+    print_r($currentApps);
+    print_r(count($currentApps));
+
+
+    // I know I should probably be doing the model->save(); format but there's an error, and I don't know if I'm even going to get the opportunity to do the actual code challenge. so I'll figure that out later if I get to that point
+    DB::insert('insert into applications (id, name, email, creditscore) values (?, ?, ?, ?)', [count($currentApps) + 1, $request->name, $request->email, $request->creditscore]);
+
     // return redirect('add-blog-post-form')->with('status', 'Blog Post Form Data Has Been inserted');
-    return redirect('apply');
+    return redirect('apply')->with('status', 'Your application has been submitted! Please check your email for results');
    }
 
 }

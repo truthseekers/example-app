@@ -26,16 +26,44 @@
                     cursor: pointer;
                 }
 
+                .form-container {
+                    background-color: lightgray;
+                    padding: 25px;
+                    margin-top: 15px;
+                    border-radius: 15px;
+                    width: 50%;
+                }
+
+                .myh1 {
+                    font-size: 64px;
+                }
+
+                @media only screen and (max-width: 1000px) {
+                    .form-container {
+                        width: 90%;
+                    }
+                    .myh1 {
+                        font-size: 34px;
+                    }
+                }
+
         </style>
     </head>
     <body class="antialiased">
             <div class="max-w-7xl mx-auto p-6 lg:p-8">
                 <div class="flex justify-center">
-                    <h1 style="font-size: 64px;">Cash Factory loan app</h1>
+                    <h1 class="myh1">Cash Factory loan app</h1>
+                </div>
+                <div class="flex justify-center">
+                      @if(session('status'))
+                        <div style="color: green;">
+                            {{ session('status') }}
+                        </div>
+                      @endif
                 </div>
                 <div class="flex justify-center">
                     
-                    <div style="background-color: lightgray; padding: 25px; margin-top: 15px; border-radius: 15px; width: 50%;">
+                    <div class="form-container">
                         <form method="post" action="{{url('submitapplication')}}">
                              @csrf
                           <label for="name">Name:</label><br>
